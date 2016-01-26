@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="controller.js"></script>
+    <body ng-app="myApp">
+        <div ng-controller="myController">
+            <div class="row">
+                <input type="text" ng-model="search.byStr">
+            </div>
+            <div class="row">
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Super Power</th>
+                        <th>End of an Era</th>
+                    </tr>
+                    <tr ng-repeat="data in arrData | filter: {name:search.byStr} as results">
+                        <td>{{data.name | capitalize:true}}</td>
+                        <td>{{data.superpower}}</td>
+                        <td>{{data.end_of_an_era | date:'yyyy-MMM-dd'}}</td>
+                    </tr>
+                    <tr ng-if="results.length == 0">
+                        <td>No results found...</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="row">
+                <button class="button button-energized col" ng-click="searchAPI();">searchAPI</button>
+            </div>
+        </div>
+    </body>
+</html>
