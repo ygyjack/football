@@ -21,7 +21,7 @@ myApp.controller('myController', ['$scope', '$http', function($scope, $http) {
         }).then(function successCallback(response) {
             console.log(JSON.stringify(response));
         }, function errorCallback(response) {
-            alert(response.data.error);
+            alert("handleError:"+response.data.error);
         });
     };
     $scope.searchAPI = function() {
@@ -33,7 +33,7 @@ myApp.controller('myController', ['$scope', '$http', function($scope, $http) {
             alert("Response Data From API:"+JSON.stringify(response.data));
             response.data
         }, function errorCallback(response) {
-            alert("Error:"+JSON.stringify(response));
+            alert("searchAPI Error:"+JSON.stringify(response));
         });
     };
     $scope.$watch('search', function() {
